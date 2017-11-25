@@ -1,7 +1,8 @@
 # Hello Java Mesh
 This is the simplest example app using the java version of the RightMesh 
-library. This app can interoperate with the 
-https://github.com/RightMesh/HelloMesh project.
+library. It is meant to operate on Linux / Windows / Raspberry PI etc,
+which support java. This app can interoperate with the Android version:
+https://github.com/RightMesh/HelloMesh
 
 ## Adding the RightMesh library
 Update the gradle.build file with the following:
