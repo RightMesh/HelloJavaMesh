@@ -38,7 +38,7 @@ repositories {
 }
 
 dependencies {
-    compile ('io.left.rightmesh:rightmesh-java-library:0.3.0')
+    compile ('io.left.rightmesh:rightmesh-java-library:0.4.0')
 }
 ```
 
