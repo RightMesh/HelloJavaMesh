@@ -5,9 +5,14 @@ which support java. This app can interoperate with the Android version:
 https://github.com/RightMesh/HelloMesh
 
 ## Adding the RightMesh library
-Update the gradle.build file with the following:
+Update the [gradle.build](build.gradle) file with the following:
 ```applicationDefaultJvmArgs = ["-noverify"]
 buildscript {
+    ext {
+        artifactory_app_username = "insertyourusername"
+        artifactory_app_password = "insertyourpasswordhash"
+        artifactory_app_key = "insertyourkey"
+    }
     repositories {
         maven {
             url "http://research.rightmesh.io/artifactory/libs-local"
