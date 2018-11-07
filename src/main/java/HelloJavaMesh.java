@@ -64,10 +64,10 @@ public class HelloJavaMesh  {
 
             // Send data to all peers.
             byte[] testData = message.getBytes();
-            for(MeshId peer : users) {
+            for (MeshId peer : users) {
                 mm.sendDataReliable(peer, HELLO_PORT, testData);
             }
-        } while(!message.equals(""));
+        } while (!message.equals(""));
 
         System.out.println("Shutting down RightMesh");
         mm.stop();
@@ -90,12 +90,7 @@ public class HelloJavaMesh  {
             System.out.println("PEER LEFT: " + event.peerUuid);
         }
     }
-
-    /**
-     * Handles incoming data events from the mesh.
-     *
-     * @param e event object from mesh
-     */
+    
     private void handleDataReceived(MeshManager.RightMeshEvent e) {
         MeshManager.DataReceivedEvent event = (MeshManager.DataReceivedEvent) e;
         String message = new String(event.data);
