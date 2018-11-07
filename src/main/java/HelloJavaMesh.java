@@ -91,6 +91,10 @@ public class HelloJavaMesh  {
         }
     }
 
+    /**
+     * Handles incoming data events from the mesh - prints the contents of the data.
+     * @param e event object from mesh
+     */
     private void handleDataReceived(MeshManager.RightMeshEvent e) {
         MeshManager.DataReceivedEvent event = (MeshManager.DataReceivedEvent) e;
         String message = new String(event.data);
