@@ -22,9 +22,18 @@ plugins {
 apply plugin: 'io.left.rightmesh.rightmesh-plugin'
 build.dependsOn("rightmesh")
 
+rightmesh {
+    outputs.dir file("src/main/assets")
+}
+
 repositories {
-    jcenter()
+    google()
+    mavenLocal()
     mavenCentral()
+    jcenter()
+    maven {
+        url "https://dl.bintray.com/ethereum/maven/"
+    }
     maven {
         url "https://research.rightmesh.io/artifactory/libs-local"
         credentials {
@@ -35,17 +44,29 @@ repositories {
 }
 
 dependencies {
-    compile ('io.left.rightmesh:rightmesh-java-library:0.9.0')
-}
-
-repositories {
-    jcenter()
+    compile('io.left.rightmesh:lib-rightmesh-jre:BEN-SNAPSHOT')
 }
 
 dependencies {
     compile 'com.google.guava:guava:23.0'
 
     testCompile 'junit:junit:4.12'
+}
+
+startScripts {
+    classpath += files('src/main/assets')
+}
+
+distributions {
+    main {
+        baseName = 'HelloJavaMesh'
+        contents {
+            from('src/main') {
+                include 'assets/**'
+                into 'lib'
+            }
+        }
+    }
 }
 
 mainClassName = 'HelloJavaMesh'
