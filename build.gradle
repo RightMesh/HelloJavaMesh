@@ -35,7 +35,7 @@ repositories {
 }
 
 dependencies {
-    compile ('io.left.rightmesh:rightmesh-java-library:0.4.0')
+    compile ('io.left.rightmesh:rightmesh-java-library:0.4.4')
 }
 
 // In this section you declare where to find the dependencies of your project
