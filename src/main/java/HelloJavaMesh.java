@@ -3,9 +3,6 @@ import io.left.rightmesh.mesh.JavaMeshManager;
 import io.left.rightmesh.mesh.MeshManager;
 
 import java.io.Console;
-import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.HashSet;
 
 import static io.left.rightmesh.mesh.MeshManager.DATA_RECEIVED;
@@ -46,8 +43,7 @@ public class HelloJavaMesh  {
         }
 
         //start up a non-superpeer right mesh
-        System.out.println("WWWWWW");
-        mm = new JavaMeshManager(false, getClass().getClassLoader().getResource("rightmesh.json").getFile());
+        mm = new JavaMeshManager(false, "rightmesh.json");
 
         // Bind to a Mesh Port.
         mm.bind(HELLO_PORT);

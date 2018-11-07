@@ -53,18 +53,10 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-startScripts {
-    classpath += files('src/main/assets')
-}
-
-distributions {
+sourceSets {
     main {
-        baseName = 'HelloJavaMesh'
-        contents {
-            from('src/main') {
-                include 'assets/**'
-                into 'lib'
-            }
+        resources {
+            srcDir 'src/main/assets'
         }
     }
 }
