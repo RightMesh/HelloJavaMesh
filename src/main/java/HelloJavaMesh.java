@@ -90,7 +90,7 @@ public class HelloJavaMesh  {
             System.out.println("PEER LEFT: " + event.peerUuid);
         }
     }
-    
+
     private void handleDataReceived(MeshManager.RightMeshEvent e) {
         MeshManager.DataReceivedEvent event = (MeshManager.DataReceivedEvent) e;
         String message = new String(event.data);
