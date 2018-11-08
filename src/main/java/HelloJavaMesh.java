@@ -12,7 +12,7 @@ import static io.left.rightmesh.mesh.MeshManager.REMOVED;
 /*
  * "Hello RightMesh" for Java - a simple application example for using RightMesh in pure Java.
  */
-public class HelloJavaMesh  {
+public class HelloJavaMesh {
     private static final int HELLO_PORT = 9876;
     private JavaMeshManager mm;
     private HashSet<MeshId> users;

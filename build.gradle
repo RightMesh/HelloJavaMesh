@@ -1,7 +1,5 @@
 buildscript {
     repositories {
-        jcenter()
-        mavenCentral()
         maven {
             url "https://research.rightmesh.io/artifactory/libs-local"
             credentials {
@@ -23,7 +21,7 @@ apply plugin: 'io.left.rightmesh.rightmesh-plugin'
 build.dependsOn("rightmesh")
 
 rightmesh {
-    outputs.dir file("src/main/assets")
+    outputs.dir file("src/main/assets/")
 }
 
 repositories {
@@ -31,6 +29,7 @@ repositories {
     mavenLocal()
     mavenCentral()
     jcenter()
+    maven { url 'https://jitpack.io' }
     maven {
         url "https://dl.bintray.com/ethereum/maven/"
     }
@@ -53,7 +52,7 @@ dependencies {
 sourceSets {
     main {
         resources {
-            srcDir 'src/main/assets'
+            srcDirs rightmesh.outputs.files
         }
     }
 }
