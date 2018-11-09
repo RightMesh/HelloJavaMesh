@@ -1,27 +1,18 @@
 buildscript {
     repositories {
-        maven {
-            url "https://research.rightmesh.io/artifactory/libs-local"
-            credentials {
-                username artifactory_app_username
-                password artifactory_app_password
-            }
-        }
-    }
-    dependencies {
-        classpath 'io.left.rightmesh:rightmesh-plugin:1.6'
+        mavenCentral()
+        jcenter()
     }
 }
-
 plugins {
     id 'application'
+    id 'io.left.rightmesh.rightmesh-plugin' version '1.8.1-SNAPSHOT'
 }
 
-apply plugin: 'io.left.rightmesh.rightmesh-plugin'
-build.dependsOn("rightmesh")
-
 rightmesh {
-    outputs.dir file("src/main/assets/")
+    appKey = rightmesh_hellojavamesh_key
+    username = rightmesh_devportal_username
+    password = rightmesh_devportal_password
 }
 
 repositories {
@@ -34,27 +25,24 @@ repositories {
         url "https://dl.bintray.com/ethereum/maven/"
     }
     maven {
-        url "https://research.rightmesh.io/artifactory/libs-local"
+        url "https://artifactory.rightmesh.io/artifactory/maven"
         credentials {
-            username artifactory_app_username
-            password artifactory_app_password
+            username rightmesh_artifactory_username
+            password rightmesh_artifactory_password
         }
     }
 }
 
 dependencies {
-    compile('io.left.rightmesh:lib-rightmesh-jre:BEN-SNAPSHOT')
+    compile 'io.left.rightmesh:lib-rightmesh-jre:BEN-SNAPSHOT'
     compile 'com.google.guava:guava:23.0'
 
     testCompile 'junit:junit:4.12'
 }
 
-sourceSets {
-    main {
-        resources {
-            srcDirs rightmesh.outputs.files
-        }
-    }
+processResources {
+    dependsOn rightmesh
+    from rightmesh.outputFile
 }
 
 mainClassName = 'HelloJavaMesh'
