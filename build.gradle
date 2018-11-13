@@ -6,7 +6,7 @@ buildscript {
 }
 plugins {
     id 'application'
-    id 'io.left.rightmesh.rightmesh-plugin' version '1.8.1-SNAPSHOT'
+    id 'io.left.rightmesh.rightmesh-plugin' version '1.8.1'
 }
 
 rightmesh {
