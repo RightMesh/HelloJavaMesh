@@ -34,7 +34,7 @@ repositories {
 }
 
 dependencies {
-    compile 'io.left.rightmesh:lib-rightmesh-jre:BEN-SNAPSHOT'
+    compile 'io.left.rightmesh:lib-rightmesh-jre:0.10.0'
     compile 'com.google.guava:guava:23.0'
 
     testCompile 'junit:junit:4.12'
