@@ -14,6 +14,9 @@ RightMesh into your own application.
 `./gradlew run` or `./build/install/HelloJavaMesh/bin/HelloJavaMesh`
 
 ## Notes on running
+
+If you have an Internet connection, HelloJavaMesh will connect to a RightMesh Superpeer and discover peers around the world who are also connected to a superpeer.
+
 At this time, the java library does not automatically join the RM network
 so it is up to the developer to manually join the network with the device
 the java code is running on. For testing purposes you should be able to
