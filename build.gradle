@@ -1,45 +1,49 @@
-apply plugin: 'java'
-apply plugin: 'application'
-
-mainClassName = 'HelloJavaMesh'
-applicationDefaultJvmArgs = ["-noverify"]
-
 buildscript {
-    ext {
-        artifactory_app_username = "insertyourusername"
-        artifactory_app_password = "insertyourpasswordhash"
-        artifactory_app_key = "insertyourkey"
-    }
     repositories {
-        jcenter()
         mavenCentral()
-        maven {
-            url "https://research.rightmesh.io/artifactory/libs-local"
-            credentials {
-                username artifactory_app_username
-                password artifactory_app_password
-            }
-        }
-    }
-    dependencies {
-        classpath 'io.left.rightmesh:rightmesh-plugin:1.6'
+        jcenter()
     }
 }
-apply plugin: 'io.left.rightmesh.rightmesh-plugin'
-build.dependsOn("rightmesh")
+plugins {
+    id 'application'
+    id 'io.left.rightmesh.rightmesh-plugin' version '1.8.1'
+}
+
+rightmesh {
+    appKey = rightmesh_hellojavamesh_key
+    username = rightmesh_devportal_username
+    password = rightmesh_devportal_password
+}
 
 repositories {
-    jcenter()
+    google()
+    mavenLocal()
     mavenCentral()
+    jcenter()
+    maven { url 'https://jitpack.io' }
     maven {
-        url "https://research.rightmesh.io/artifactory/libs-local"
+        url "https://dl.bintray.com/ethereum/maven/"
+    }
+    maven {
+        url "https://artifactory.rightmesh.io/artifactory/maven"
         credentials {
-            username artifactory_app_username
-            password artifactory_app_password
+            username rightmesh_artifactory_username
+            password rightmesh_artifactory_password
         }
     }
 }
 
 dependencies {
-    compile ('io.left.rightmesh:rightmesh-java-library:0.7.0')
+    compile 'io.left.rightmesh:lib-rightmesh-jre:0.10.0'
+    compile 'com.google.guava:guava:23.0'
+
+    testCompile 'junit:junit:4.12'
 }
+
+processResources {
+    dependsOn rightmesh
+    from rightmesh.outputFile
+}
+
+mainClassName = 'HelloJavaMesh'
+applicationDefaultJvmArgs = ["-noverify"]

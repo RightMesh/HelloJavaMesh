@@ -12,7 +12,7 @@ import static io.left.rightmesh.mesh.MeshManager.REMOVED;
 /*
  * "Hello RightMesh" for Java - a simple application example for using RightMesh in pure Java.
  */
-public class HelloJavaMesh  {
+public class HelloJavaMesh {
     private static final int HELLO_PORT = 9876;
     private JavaMeshManager mm;
     private HashSet<MeshId> users;
@@ -42,8 +42,8 @@ public class HelloJavaMesh  {
             return;
         }
 
-        // Start up a non-superpeer RightMesh instance.
-        mm = new JavaMeshManager(false);
+        //start up a non-superpeer right mesh
+        mm = new JavaMeshManager(false, "rightmesh.json");
 
         // Bind to a Mesh Port.
         mm.bind(HELLO_PORT);
@@ -64,10 +64,10 @@ public class HelloJavaMesh  {
 
             // Send data to all peers.
             byte[] testData = message.getBytes();
-            for(MeshId peer : users) {
+            for (MeshId peer : users) {
                 mm.sendDataReliable(peer, HELLO_PORT, testData);
             }
-        } while(!message.equals(""));
+        } while (!message.equals(""));
 
         System.out.println("Shutting down RightMesh");
         mm.stop();
@@ -92,8 +92,7 @@ public class HelloJavaMesh  {
     }
 
     /**
-     * Handles incoming data events from the mesh.
-     *
+     * Handles incoming data events from the mesh - prints the contents of the data.
      * @param e event object from mesh
      */
     private void handleDataReceived(MeshManager.RightMeshEvent e) {
